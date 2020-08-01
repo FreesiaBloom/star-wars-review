@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Star wars review app</a>
+    <router-link class="navbar-brand" to="/">Star wars review app</router-link>
     <button
       class="navbar-toggler"
       type="button"

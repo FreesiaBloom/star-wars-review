@@ -1,9 +1,12 @@
 <template>
-  <div id="app">
+  <v-app :dark="dark" class="dark">
     <TopNavigation></TopNavigation>
-    <router-view/>
-  </div>
+    <v-main>
+      <router-view/>
+    </v-main>
+  </v-app>
 </template>
+
 <script>
 import TopNavigation from './components/TopNavigation.vue';
 
@@ -12,12 +15,11 @@ export default {
   components: {
     TopNavigation,
   },
+  data: () => ({
+    dark: true,
+  }),
 };
 </script>
-
-<style scoped lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-}
+<style lang="scss">
 
 </style>

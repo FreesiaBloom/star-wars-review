@@ -1,62 +1,35 @@
 <template>
-  <section class="container movies">
+  <v-container class="movies">
     <h1>Movies</h1>
-    <div class="movies-list row">
-      <div class="movies-item col-4" v-for="(movie, index) in allMovies" :key="index">
-        <div class="movies-item--content">
-          <h2>{{movie.title}}</h2>
-          <span>{{movie.opening_crawl}}</span>
-          <button class="btn btn-light" @click="showMovieInfo(index)">Read more</button>
-        </div>
+    <div class="row">
+      <v-layout row wrap v-if="allMovies">
+        <v-flex v-for="(movie, index) in allMovies" :key="index" xs12 sm6>
+          <MovieItem :title="movie.title" :crawl="movie.opening_crawl" :index="index"/>
+        </v-flex>
+      </v-layout>
+      <div v-if="!allMovies" class="d-block p-3">
+        <p>Oh no, there are no movies! Something went wrong with API!</p>
       </div>
     </div>
-  </section>
+  </v-container>
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import MovieItem from './MovieItem.vue';
 
 export default {
   name: 'MoviesList',
+  components: {
+    MovieItem,
+  },
   computed: {
     ...mapGetters(['allMovies']),
   },
   methods: {
     ...mapActions(['getAllMovies']),
-    showMovieInfo(index) {
-      this.$router.push({
-        name: 'MovieItem',
-        params: {
-          id: index + 1,
-        },
-      });
-    },
   },
   created() {
     this.getAllMovies();
   },
 };
 </script>
-<style scoped lang="scss">
-.movies {
-  &-item {
-    margin-bottom: 16px;
-    &--content {
-      display: grid;
-      text-align: center;
-      background: #11447b;
-      border-radius: 8px;
-      color: #ffffff;
-      padding: 16px;
-
-      span {
-        display: inline-block;
-        width: 100%;
-        white-space: nowrap;
-        overflow: hidden !important;
-        text-overflow: ellipsis;
-        margin-bottom: 16px;
-      }
-    }
-  }
-}
-</style>

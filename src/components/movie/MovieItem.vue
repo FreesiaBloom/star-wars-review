@@ -1,61 +1,44 @@
 <template>
-  <div class="container item">
-    <div class="item-header">
-      <h1>{{getMovie.title}}</h1>
-      <h2>Episode: {{getMovie.episode_id}}</h2>
-    </div>
-    <div class="row item-info">
-        <div class="col-md-4">
-            <p>Director: {{getMovie.director}}</p>
-        </div>
-        <div class="col-md-4">
-            <p>Producer: {{getMovie.producer}}</p>
-        </div>
-        <div class="col-md-4">
-            <p>Release date: {{getMovie.release_date}}</p>
-        </div>
-    </div>
-    <div>
-        <span>
-            {{getMovie.opening_crawl}}
-        </span>
-    </div>
-    <AddReview />
-  </div>
+  <v-card flat dark class="item mx-2 mb-4">
+    <v-card-title class="headline">{{ title }}</v-card-title>
+
+    <v-card-text class="">
+        <p class="item-crawl m0 p0">
+            {{ crawl }}
+        </p>
+    </v-card-text>
+
+    <v-card-actions>
+      <v-btn
+        text
+        :to="{ name: 'MovieDetails', params: {id: index } }">
+            Read more
+    </v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import AddReview from '../review/AddReview.vue';
-
 export default {
   name: 'MovieItem',
   props: {
-    id: {
-      type: [String, Number],
-      required: true,
-    },
-  },
-  components: {
-    AddReview,
-  },
-  computed: {
-    getMovie() {
-      return this.$store.state.MoviesList.moviesList[this.id];
-    },
-    ...mapGetters(['allMovies']),
-  },
-  methods: {
-    ...mapActions(['getAllMovies']),
-  },
-  created() {
-    this.getAllMovies();
+    index: [String, Number],
+    title: String,
+    crawl: String,
   },
 };
 </script>
-<style lang="scss" scope>
-    .item {
-        &-header, &-info {
-            text-align: center;
-        }
+<style lang="scss" scoped>
+.item {
+    &-crawl {
+        display: block; /* Fallback for non-webkit */
+        display: -webkit-box;
+        max-width: 600px;
+        height: 40px; /* Fallback for non-webkit */
+        margin: 0 auto;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
+}
 </style>

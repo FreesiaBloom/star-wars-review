@@ -1,5 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
 
-h2 {
-    font-size: 1.6rem;;
+.v-application--wrap {
+    background-image: url("./images/stars_berlin.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.v-card__actions {
+    justify-content: flex-end;
 }

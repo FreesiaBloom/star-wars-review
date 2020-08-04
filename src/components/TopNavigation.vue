@@ -1,28 +1,30 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <router-link class="navbar-brand" to="/">Star wars review app</router-link>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarText"
-      aria-controls="navbarText"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav ml-auto">
+  <v-app-bar app color="rgb(0, 0, 0, 0.6)" dark>
+    <div class="d-flex align-center">
+      <v-toolbar-title>
+        <v-btn text>Review App</v-btn>
+      </v-toolbar-title>
+    </div>
+
+    <v-spacer></v-spacer>
+    <v-btn text to="/" class="mr-2">
+      <span>Home</span>
+    </v-btn>
+    <v-btn text to="/movies-list"  class="mr-2">
+      <span>Movies</span>
+    </v-btn>
+    <v-btn text to="/reviews-list"  class="mr-2">
+      <span>Reviews</span>
+    </v-btn>
+    <!-- <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <router-link class="nav-link" to="/">Home</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/movies-list">Movies</router-link>
         </li>
-      </ul>
-    </div>
-  </nav>
+    </ul>-->
+  </v-app-bar>
 </template>
 <script>
 export default {

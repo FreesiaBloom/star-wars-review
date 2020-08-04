@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import MoviesList from '../components/movie/MoviesList.vue';
-import MovieItem from '../components/movie/MovieItem.vue';
+import MovieDetails from '../components/movie/MovieDetails.vue';
 import ReviewsList from '../components/review/ReviewsList.vue';
 
 Vue.use(VueRouter);
@@ -19,9 +19,9 @@ const routes = [
     component: MoviesList,
   },
   {
-    path: '/movies-list/:id',
-    name: 'MovieItem',
-    component: MovieItem,
+    path: '/movies-details/:id',
+    name: 'MovieDetails',
+    component: MovieDetails,
     props: true,
     // validation to prevent navigation with wrong url link
     beforeEnter(to, from, next) {
